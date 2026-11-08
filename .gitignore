@@ -1,0 +1,6 @@
+# Jamais de clé privée de licence ni de registre clients dans ce dépôt public
+*.pem
+*.key
+cle-privee*
+registre-licences*
+nexus-licences*
