@@ -1,6 +1,6 @@
 (() => {
   const config = window.NEXUS_DOWNLOADS || {};
-  document.querySelectorAll('[data-version]').forEach((el) => { el.textContent = config.version || '2.8.0'; });
+  document.querySelectorAll('[data-version]').forEach((el) => { el.textContent = config.version || '2.9.10'; });
   document.querySelectorAll('[data-download]').forEach((link) => {
     const value = config[link.dataset.download];
     if (!value) return;
@@ -25,7 +25,7 @@
   const mobile = navigator.userAgentData?.mobile || /Android|iPhone|iPad|iPod/i.test(ua) || (/Mac/i.test(platform) && navigator.maxTouchPoints > 1);
   const os = mobile ? 'mobile' : /Win/i.test(platform + ua) ? 'windows' : /Mac/i.test(platform + ua) ? 'mac' : /Linux/i.test(platform + ua) ? 'linux' : 'unknown';
   const messages = {
-    windows: 'Windows détecté : l’installateur .exe est le choix recommandé.',
+    windows: config.windowsKind === 'setup' ? 'Windows détecté : l’installateur .exe est le choix recommandé.' : 'Windows détecté : le fichier .exe portable est le choix recommandé (non signé, SmartScreen affichera un avertissement).',
     linux: 'Linux détecté : choisissez l’AppImage, ou le .deb sur Ubuntu / Debian.',
     mac: 'Vous êtes sur macOS : cette version n’est pas encore disponible pour votre ordinateur.',
     mobile: 'Vous êtes sur mobile : ouvrez cette page sur votre ordinateur Windows ou Linux pour installer l’application.',

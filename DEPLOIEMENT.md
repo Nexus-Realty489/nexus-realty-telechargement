@@ -73,3 +73,15 @@ Remplacer les fichiers et les liens dans le seul `config.js`. Le texte ne contie
 L’exécutable Windows est **non signé**. SmartScreen peut l’avertir ou le bloquer selon la politique du PC. Ne jamais demander de désactiver la protection ; vérifier l’origine et les empreintes. Un certificat de signature et des tests sur de vrais PC Windows restent souhaitables avant une diffusion commerciale large.
 
 Les téléchargements ne contrôlent pas un abonnement et n’activent pas de licence payante. Le programme est local : pas de synchronisation entre installations ni de serveur partagé créé automatiquement.
+
+## Version 2.9.10 officielle (18/11/2026)
+
+`config.js` et `index.html` pointent vers la release `v2.9.10` (AppImage, .deb, exe portable non signé, `SHA256SUMS.txt`). Fichiers à joindre (paquets officiels avec la clé publique d’Ayoub, jamais les paquets « développement ») : `/workspace/nexus-desktop/officiel-2.9.10/`.
+
+```bash
+cd /workspace/nexus-desktop/officiel-2.9.10
+gh release create v2.9.10 -R Nexus-Realty489/nexus-realty-telechargement \
+  --title "Nexus Realty 2.9.10" --notes-file NOTES-RELEASE-2.9.10.md \
+  NexusRealty-2.9.10-x86_64.AppImage nexus-realty-2.9.10-amd64.deb NexusRealty-Portable-2.9.10.exe SHA256SUMS.txt
+cd /workspace/nexus-dl-repo && git push origin main
+```
