@@ -85,3 +85,15 @@ gh release create v2.9.10 -R Nexus-Realty489/nexus-realty-telechargement \
   NexusRealty-2.9.10-x86_64.AppImage nexus-realty-2.9.10-amd64.deb NexusRealty-Portable-2.9.10.exe SHA256SUMS.txt
 cd /workspace/nexus-dl-repo && git push origin main
 ```
+
+## Version 2.10.0 (18/11/2026)
+
+`config.js`, `index.html` et `assets/app.js` pointent vers la release `v2.10.0` (AppImage, .deb, exe portable non signé, `SHA256SUMS.txt`). Le site gagne trois sections : **Nouveautés 2.10** (acquéreurs potentiels, affiche vitrine, import CSV, mode démonstration), **Tarifs** (Essentiel 49 €, Pro 79 €, Business 129 € HT/mois ; annuel 490/790/1 290 € HT ; offre de lancement −20 % la première année en annuel avant le 31/03/2027 ; essai 14 jours) et **Contact** (liens `mailto:` et `tel:`, réponse sous 24 h ouvrées, Business prioritaire). Fichiers officiels : `/workspace/nexus-desktop/officiel-2.10.0/`.
+
+```bash
+cd /workspace/nexus-desktop/officiel-2.10.0
+gh release create v2.10.0 -R Nexus-Realty489/nexus-realty-telechargement \
+  --title "Nexus Realty 2.10.0" --notes-file NOTES-RELEASE-2.10.0.md \
+  NexusRealty-2.10.0-x86_64.AppImage nexus-realty-2.10.0-amd64.deb NexusRealty-Portable-2.10.0.exe SHA256SUMS.txt
+cd /workspace/nexus-dl-repo && git push origin main
+```

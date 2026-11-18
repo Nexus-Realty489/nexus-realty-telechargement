@@ -2,11 +2,11 @@
    Liens relatifs : site et fichiers hébergés ensemble.
    Ou URLs HTTPS vers les fichiers d'une release GitHub (pas vers la page de la release). */
 window.NEXUS_DOWNLOADS = Object.freeze({
-  version: '2.9.10',
-  windows: 'https://github.com/Nexus-Realty489/nexus-realty-telechargement/releases/download/v2.9.10/NexusRealty-Portable-2.9.10.exe',
+  version: '2.10.0',
+  windows: 'https://github.com/Nexus-Realty489/nexus-realty-telechargement/releases/download/v2.10.0/NexusRealty-Portable-2.10.0.exe',
   windowsKind: 'portable', // 'setup' lorsque l’installateur NSIS est validé
-  windowsSetup: 'https://github.com/Nexus-Realty489/nexus-realty-telechargement/releases/download/v2.9.10/NexusRealty-Setup-2.9.10.exe',
-  appimage: 'https://github.com/Nexus-Realty489/nexus-realty-telechargement/releases/download/v2.9.10/NexusRealty-2.9.10-x86_64.AppImage',
-  deb: 'https://github.com/Nexus-Realty489/nexus-realty-telechargement/releases/download/v2.9.10/nexus-realty-2.9.10-amd64.deb',
-  checksums: 'https://github.com/Nexus-Realty489/nexus-realty-telechargement/releases/download/v2.9.10/SHA256SUMS.txt',
+  windowsSetup: 'https://github.com/Nexus-Realty489/nexus-realty-telechargement/releases/download/v2.10.0/NexusRealty-Setup-2.10.0.exe',
+  appimage: 'https://github.com/Nexus-Realty489/nexus-realty-telechargement/releases/download/v2.10.0/NexusRealty-2.10.0-x86_64.AppImage',
+  deb: 'https://github.com/Nexus-Realty489/nexus-realty-telechargement/releases/download/v2.10.0/nexus-realty-2.10.0-amd64.deb',
+  checksums: 'https://github.com/Nexus-Realty489/nexus-realty-telechargement/releases/download/v2.10.0/SHA256SUMS.txt',
 });

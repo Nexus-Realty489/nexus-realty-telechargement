@@ -1,6 +1,6 @@
 (() => {
   const config = window.NEXUS_DOWNLOADS || {};
-  document.querySelectorAll('[data-version]').forEach((el) => { el.textContent = config.version || '2.9.10'; });
+  document.querySelectorAll('[data-version]').forEach((el) => { el.textContent = config.version || '2.10.0'; });
   document.querySelectorAll('[data-download]').forEach((link) => {
     const value = config[link.dataset.download];
     if (!value) return;
