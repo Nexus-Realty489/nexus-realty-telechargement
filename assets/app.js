@@ -34,4 +34,90 @@
   document.getElementById('detection').textContent = messages[os];
   const card = document.getElementById(`${os}-card`);
   if (card) { card.classList.add('is-recommended'); card.querySelector('.recommended').hidden = false; }
+
+  const contactEmail = typeof config.contactEmail === 'string' && config.contactEmail.includes('@')
+    ? config.contactEmail.trim()
+    : 'Ayoubmeilleur9@gmail.com';
+
+  const publicPaymentUrl = (value) => {
+    if (typeof value !== 'string') return '';
+    const trimmed = value.trim();
+    if (!trimmed) return '';
+    try {
+      const url = new URL(trimmed);
+      return (url.protocol === 'https:' || url.protocol === 'http:') ? url.href : '';
+    } catch {
+      return '';
+    }
+  };
+
+  const paymentLink = (plan, period, provider) => {
+    const value = config.paiements?.[plan]?.[period]?.[provider];
+    return publicPaymentUrl(value);
+  };
+
+  const mailtoFor = (plan, period, method) => {
+    const labels = { essentiel: 'Essentiel', pro: 'Pro', business: 'Business', mensuel: 'mensuel', annuel: 'annuel', carte: 'carte bancaire', paypal: 'PayPal', sepa: 'prélèvement bancaire' };
+    const subject = `Nexus Realty — demande ${labels[plan] || plan} ${labels[period] || period} (${labels[method] || method})`;
+    const body = `Bonjour,\n\nJe souhaite souscrire à la formule ${labels[plan] || plan} (${labels[period] || period}) par ${labels[method] || method}.\n\nMerci.`;
+    return `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+
+  document.querySelectorAll('.price-grid article[data-plan]').forEach((article) => {
+    const plan = article.dataset.plan;
+    const amountEl = article.querySelector('[data-price-amount]');
+    const unitEl = article.querySelector('[data-price-unit]');
+    const altEl = article.querySelector('[data-price-alt]');
+    const fallback = article.querySelector('.pay-fallback');
+    const fallbackLink = article.querySelector('.pay-contact');
+    const periodButtons = article.querySelectorAll('[data-period]');
+
+    if (fallbackLink) fallbackLink.href = `mailto:${contactEmail}`;
+
+    const selectedPeriod = () => {
+      const pressed = article.querySelector('[data-period][aria-pressed="true"]');
+      return pressed?.dataset.period || 'mensuel';
+    };
+
+    const render = () => {
+      const period = selectedPeriod();
+      if (amountEl) amountEl.textContent = article.dataset[`${period}Amount`] || amountEl.textContent;
+      if (unitEl) unitEl.textContent = article.dataset[`${period}Unit`] || unitEl.textContent;
+      if (altEl) altEl.textContent = article.dataset[`${period}Alt`] || altEl.textContent;
+
+      const stripe = paymentLink(plan, period, 'stripe');
+      const paypal = paymentLink(plan, period, 'paypal');
+      let missing = false;
+
+      article.querySelectorAll('.pay-btn[data-pay]').forEach((btn) => {
+        const provider = btn.dataset.pay;
+        const method = btn.dataset.method || provider;
+        const url = provider === 'paypal' ? paypal : stripe;
+        if (url) {
+          btn.href = url;
+          btn.target = '_blank';
+          btn.rel = 'noopener noreferrer';
+          btn.dataset.ready = 'true';
+          btn.removeAttribute('aria-disabled');
+        } else {
+          missing = true;
+          btn.href = mailtoFor(plan, period, method);
+          btn.removeAttribute('target');
+          btn.removeAttribute('rel');
+          btn.dataset.ready = 'false';
+        }
+      });
+
+      if (fallback) fallback.hidden = !missing;
+    };
+
+    periodButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        periodButtons.forEach((other) => other.setAttribute('aria-pressed', String(other === button)));
+        render();
+      });
+    });
+
+    render();
+  });
 })();

@@ -8,7 +8,7 @@
 .news-grid article,.price-grid article{border:1px solid #31425c;border-radius:14px;background:#101b2d;padding:20px}
 .news-grid b{font-size:15px}.news-grid p,.price-grid p{color:#97a8c1;font-size:13px;line-height:1.7}
 .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.price-grid article{position:relative}.price-grid h3{margin:0 0 8px;font-size:20px}
+.price-grid article{position:relative;display:flex;flex-direction:column}.price-grid h3{margin:0 0 8px;font-size:20px}
 .price-grid .amount{color:#eef3fb;font-size:32px;font-weight:700;margin:6px 0 0}.price-grid .amount small{font-size:13px;color:#97a8c1;font-weight:500}
 .price-grid .annual{margin:2px 0 10px;color:#79bcff}
 .price-grid .featured{border-color:#79bcff;box-shadow:0 0 0 1px #79bcff inset}
@@ -19,3 +19,27 @@
 .footer a[href^="mailto"],.footer a[href^="tel"]{color:#97a8c1;font-size:12px}
 @media(max-width:900px){.news-grid{grid-template-columns:1fr 1fr}.price-grid{grid-template-columns:1fr}}
 @media(max-width:560px){.news-grid{grid-template-columns:1fr}.news h2,.pricing h2,.contact h2{font-size:22px}.header nav a[href="#tarifs"],.header nav a[href="#contact"]{display:none}}
+
+/* Paiement des formules */
+.period-toggle{display:flex;gap:8px;margin:0 0 4px;margin-top:auto;padding-top:16px}
+.period-toggle button{flex:1;background:#142137;color:#c5d3e5;border:1px solid #31425c;border-radius:9px;padding:10px 12px;font-size:12px;font-weight:650;cursor:pointer;min-height:44px;font-family:inherit}
+.period-toggle button[aria-pressed="true"]{background:#82bfff;color:#061628;border-color:#82bfff}
+.pay-label{margin:16px 0 8px;font-size:11px;letter-spacing:1.4px;font-weight:700;color:#88bce9;text-transform:uppercase}
+.pay-choices{display:flex;flex-direction:column;gap:8px}
+.pay-btn{display:flex;align-items:center;justify-content:center;width:100%;padding:12px 14px;border:1px solid #405a7a;background:#253a55;border-radius:9px;font-size:13px;font-weight:700;min-height:44px;text-align:center}
+.pay-btn[data-ready="true"]{background:#82bfff;color:#061628;border-color:#82bfff}
+.pay-fallback{margin:12px 0 0;color:#9bb0cb;font-size:12px;line-height:1.7}
+.pay-fallback a{color:#b4d6ff;text-decoration:underline;text-underline-offset:2px}
+.how-payment{margin-top:22px;padding:18px 20px;background:#131f32;border:1px solid #293d58;border-radius:12px}
+.how-payment b{display:block;font-size:15px;margin-bottom:8px}
+.how-payment p{margin:0;color:#97a8c1;font-size:13px;line-height:1.7}
+.featured .pay-btn[data-ready="true"],.featured .period-toggle button[aria-pressed="true"]{background:#82bfff;color:#061628}
+@media(hover:hover) and (pointer:fine){
+  .period-toggle button:hover{border-color:#79bcff}
+  .pay-btn:hover{border-color:#a2c8f5}
+  .pay-btn[data-ready="true"]:hover{background:#add6ff}
+  .pay-fallback a:hover{color:#fff}
+}
+@media(max-width:740px){
+  .how-payment{padding:15px}
+}
