@@ -97,3 +97,11 @@ gh release create v2.10.0 -R Nexus-Realty489/nexus-realty-telechargement \
   NexusRealty-2.10.0-x86_64.AppImage nexus-realty-2.10.0-amd64.deb NexusRealty-Portable-2.10.0.exe SHA256SUMS.txt
 cd /workspace/nexus-dl-repo && git push origin main
 ```
+
+## Refonte ciblée « premium » (non publiée, en attente de validation d’Ayoub)
+
+Mêmes fichiers, mêmes liens de release, mêmes scripts (`config.js`, `assets/app.js`), mêmes moyens de paiement.
+À chaque nouvelle version, mettre à jour dans `config.js` : `version`, les liens, **`publishedAt`** (date de la release) et **`sizes`** (tailles en octets, `gh release view vX.Y.Z --json assets,publishedAt`). Le site affiche la taille en Mo (base 1024, comme l’Explorateur Windows) et la date en français.
+Paiement : les moyens de paiement (Carte bancaire, PayPal, Prélèvement) s’affichent à l’étape 2, après le clic sur « Choisir … » (fenêtre `<dialog id="paiement">`). Tant que les liens `paiements.*` sont vides, chaque bouton prépare un e-mail de demande et la mention « Paiement en ligne bientôt disponible, contacte-nous » s’affiche. Sans JavaScript, « Choisir … » reste un lien e-mail.
+Offre de lancement : masquée automatiquement après `offreLancementFin` (2027-03-31).
+Pages légales : pas encore publiées (les modèles de `docs/legal` contiennent encore [NOM], [SIRET], [ADRESSE]) ; les liens du pied de page sont marqués « bientôt ». Une fois complétés et relus : `node scripts/build-legal.mjs <dossier du site>` puis remplacer les `<span class="soon">` par des liens.
