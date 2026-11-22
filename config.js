@@ -5,13 +5,13 @@
    Jamais de clé secrète (sk_live, secret PayPal, etc.). Laissez les champs vides tant que
    les comptes ne sont pas ouverts : le site affichera alors le message de contact. */
 window.NEXUS_DOWNLOADS = Object.freeze({
-  version: '2.11.0',
-  windows: 'https://github.com/Nexus-Realty489/nexus-realty-telechargement/releases/download/v2.11.0/NexusRealty-Portable-2.11.0.exe',
+  version: '2.11.1',
+  windows: 'https://github.com/Nexus-Realty489/nexus-realty-telechargement/releases/download/v2.11.1/NexusRealty-Portable-2.11.1.exe',
   windowsKind: 'portable', // 'setup' lorsque l’installateur NSIS est validé
-  windowsSetup: 'https://github.com/Nexus-Realty489/nexus-realty-telechargement/releases/download/v2.11.0/NexusRealty-Setup-2.11.0.exe',
-  appimage: 'https://github.com/Nexus-Realty489/nexus-realty-telechargement/releases/download/v2.11.0/NexusRealty-2.11.0-x86_64.AppImage',
-  deb: 'https://github.com/Nexus-Realty489/nexus-realty-telechargement/releases/download/v2.11.0/nexus-realty-2.11.0-amd64.deb',
-  checksums: 'https://github.com/Nexus-Realty489/nexus-realty-telechargement/releases/download/v2.11.0/SHA256SUMS.txt',
+  windowsSetup: 'https://github.com/Nexus-Realty489/nexus-realty-telechargement/releases/download/v2.11.1/NexusRealty-Setup-2.11.1.exe',
+  appimage: 'https://github.com/Nexus-Realty489/nexus-realty-telechargement/releases/download/v2.11.1/NexusRealty-2.11.1-x86_64.AppImage',
+  deb: 'https://github.com/Nexus-Realty489/nexus-realty-telechargement/releases/download/v2.11.1/nexus-realty-2.11.1-amd64.deb',
+  checksums: 'https://github.com/Nexus-Realty489/nexus-realty-telechargement/releases/download/v2.11.1/SHA256SUMS.txt',
   contactEmail: 'Ayoubmeilleur9@gmail.com',
   paiements: {
     essentiel: {
